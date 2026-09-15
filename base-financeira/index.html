@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base Financeira — educação financeira para todo mundo</title>
+<meta name="description" content="Plataforma gratuita de educação financeira básica com calculadora de orçamento mensal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#topo" class="wordmark">Base Financeira</a>
+    <nav class="site-nav">
+      <a href="#sobre">O básico</a>
+      <a href="#calculadora">Calculadora</a>
+      <a href="#dicas">Dicas</a>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">Educação financeira básica · uso gratuito</p>
+      <h1>Organizar o próprio dinheiro não devia ser complicado.</h1>
+      <p class="hero-lede">Uma ferramenta simples para entender o básico de educação financeira e montar o orçamento do mês — sem custo, sem cadastro, sem letra miúda.</p>
+      <a href="#calculadora" class="btn-primary">Ir para a calculadora</a>
+    </div>
+  </section>
+
+  <section id="sobre" class="section">
+    <div class="wrap narrow">
+      <h2>O que é educação financeira, na prática</h2>
+      <p>Não é sobre ficar rico rápido, nem sobre planilhas complicadas. É sobre saber, com clareza, quanto entra e quanto sai do seu bolso todo mês — e decidir de propósito para onde o dinheiro vai, em vez de descobrir no fim do mês que ele já foi embora.</p>
+      <p>Isso importa em qualquer fase da vida: para quem está buscando o primeiro emprego e organizando o primeiro salário, para quem sustenta uma casa, ou para quem só quer parar de se surpreender com o cartão. O primeiro passo é sempre o mesmo: colocar os números na frente dos olhos.</p>
+    </div>
+  </section>
+
+  <section id="calculadora" class="section calculator-section">
+    <div class="wrap narrow">
+      <h2>Sua calculadora de orçamento</h2>
+      <p class="section-lede">Registre o que entra e o que sai, mês a mês. O saldo é atualizado a cada lançamento.</p>
+
+      <div class="ledger">
+
+        <div class="period-bar">
+          <button type="button" id="periodo-anterior" class="period-nav" aria-label="Mês anterior">‹</button>
+          <span id="periodo-atual" class="period-label">Setembro de 2026</span>
+          <button type="button" id="periodo-seguinte" class="period-nav" aria-label="Próximo mês">›</button>
+        </div>
+
+        <div class="balance-row">
+          <span class="balance-label">Saldo do mês</span>
+          <span id="saldo" class="balance-value">R$ 0,00</span>
+        </div>
+
+        <form id="form-lancamento" class="entry-form">
+          <div class="field field-desc">
+            <label for="descricao">Descrição</label>
+            <input type="text" id="descricao" placeholder="Ex.: Salário, aluguel, mercado" required>
+          </div>
+          <div class="field-row">
+            <div class="field field-valor">
+              <label for="valor">Valor (R$)</label>
+              <input type="number" id="valor" placeholder="0,00" min="0.01" step="0.01" required>
+            </div>
+            <div class="field field-tipo">
+              <label for="tipo">Tipo</label>
+              <select id="tipo">
+                <option value="receita">Receita</option>
+                <option value="despesa">Despesa</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-primary btn-add">Adicionar</button>
+          </div>
+        </form>
+
+        <div class="entries-head">
+          <span>Lançamentos do mês</span>
+          <button id="limpar" class="btn-text" type="button">Limpar mês</button>
+        </div>
+
+        <ul id="lista-lancamentos" class="entries-list">
+          <li class="empty-state" id="empty-state">Nenhum lançamento neste mês ainda. Comece adicionando sua receita.</li>
+        </ul>
+      </div>
+
+      <div class="ledger dashboard">
+        <h3>Painel do mês</h3>
+
+        <div class="bars" id="bars-container">
+          <div class="bar-row">
+            <span class="bar-label">Receitas</span>
+            <div class="bar-track"><div class="bar-fill receita" id="bar-receita"></div></div>
+            <span class="bar-value" id="valor-receita">R$ 0,00</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Despesas</span>
+            <div class="bar-track"><div class="bar-fill despesa" id="bar-despesa"></div></div>
+            <span class="bar-value" id="valor-despesa">R$ 0,00</span>
+          </div>
+        </div>
+
+        <h3 class="dashboard-subtitle">Evolução do saldo</h3>
+        <div id="evolucao-vazia" class="empty-state small">Registre lançamentos em mais de um mês para ver a evolução aqui.</div>
+        <svg id="grafico-evolucao" class="evolucao-chart" viewBox="0 0 600 160" preserveAspectRatio="none" aria-hidden="true"></svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="dicas" class="section">
+    <div class="wrap narrow">
+      <h2>Seis hábitos que fazem diferença</h2>
+      <ul class="tips-list">
+        <li>
+          <h3>Anote tudo, até o pequeno gasto</h3>
+          <p>Cafezinho, condução, lanche na rua. É nesses valores pequenos e frequentes que o orçamento costuma vazar sem ninguém perceber.</p>
+        </li>
+        <li>
+          <h3>Separe uma parte assim que o dinheiro entrar</h3>
+          <p>Mesmo que seja pouco, guardar antes de gastar muda o resultado do mês. Esperar "o que sobrar" quase sempre significa não sobrar nada.</p>
+        </li>
+        <li>
+          <h3>Compare preços antes de comprar</h3>
+          <p>Olhar em duas ou três opções, mesmo para compras pequenas, evita pagar mais do que precisava sem perceber.</p>
+        </li>
+        <li>
+          <h3>Separe necessidade de vontade</h3>
+          <p>Nem todo gasto com vontade precisa ser cortado — mas vale saber qual é qual antes de decidir.</p>
+        </li>
+        <li>
+          <h3>Revise os gastos fixos de tempos em tempos</h3>
+          <p>Assinaturas e serviços esquecidos são mais comuns do que parecem, e costumam ser os mais fáceis de cortar.</p>
+        </li>
+        <li>
+          <h3>Comece uma reserva, mesmo pequena</h3>
+          <p>Ela não precisa nascer grande. O importante é existir, para que um imprevisto não vire uma dívida.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap narrow">
+    <p>Base Financeira é um projeto de extensão do curso de Análise e Desenvolvimento de Sistemas, desenvolvido para a comunidade de Itatiaia — RJ.</p>
+    <p class="footer-meta">Código aberto no GitHub. Contribui para os ODS 4 (Educação de Qualidade) e ODS 8 (Trabalho Decente e Crescimento Econômico).</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
