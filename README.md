@@ -39,10 +39,3 @@ base-financeira/
 ├── script.js
 └── README.md
 ```
-
-## Próximos passos (metodologia do trabalho final)
-
-- [ ] Apresentar a plataforma à comunidade local.
-- [ ] Coletar feedback dos participantes.
-- [ ] Fazer ajustes finais a partir do feedback.
-- [ ] Publicar o código no GitHub (repositório público) e, opcionalmente, hospedar via GitHub Pages.
